@@ -34,23 +34,30 @@ export default () => {
 
     return (
         <main className='App'>
-            <Input
-                value={text}
-                onChange={e => {
-                    const { value } = e.target;
-                    setText(value);
-                    setEncryptedText(encrypt(value, shiftAmount));
-                }}
-            />
-            <Shift
-                onChange={e => {
-                    const { value } = e.target;
-                    setShift(Number(value));
-                    setEncryptedText(encrypt(text, Number(value)));
-                }}
-            />
-
-            <h3 className='EncryptedText'>{encryptedText}</h3>
+            <h1>Caeser Cipher</h1>
+            <section className='Cipher'>
+                <Input
+                    value={text}
+                    onChange={e => {
+                        const { value } = e.target;
+                        setText(value);
+                        setEncryptedText(encrypt(value, shiftAmount));
+                    }}
+                />
+                <Shift
+                    onChange={e => {
+                        const { value } = e.target;
+                        setShift(Number(value));
+                        setEncryptedText(encrypt(text, Number(value)));
+                    }}
+                />
+                <h3 className='EncryptedText'>
+                    <span>Encrypted:</span> <br /> {encryptedText}
+                </h3>
+            </section>
+            <footer>
+                Created by <span className='Author'>Carlos De La Roca</span>
+            </footer>
         </main>
     );
 };
