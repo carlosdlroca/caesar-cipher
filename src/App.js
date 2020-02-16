@@ -4,28 +4,49 @@ import "./Styles.css";
 import Input from "./Input";
 import Shift from "./Shift";
 
+const ALPHA = /[a-zA-Z]/;
+
 export default () => {
     const [text, setText] = useState("");
     const [shiftAmount, setShift] = useState(0);
     const [encryptedText, setEncryptedText] = useState(text);
 
-    function handleInputChange(e) {
-        const { value } = e.target;
-        setText(value);
-    }
+    const encrypt = (value, shift) => {
+        let encrypted = "";
+        for (let char of value) {
+            encrypted += shiftLetter(char, shift);
+        }
+        return encrypted;
+    };
 
-    const encrypt = value => {
-        return value;
+    const shiftLetter = (char, shift) => {
+        const charCode = char.charCodeAt(0);
+        if (ALPHA.test(char)) {
+            let lower;
+            if (charCode >= 65 && charCode <= 90) lower = 65;
+            if (charCode >= 97 && charCode <= 122) lower = 97;
+
+            const shiftedCharCode = ((charCode - lower + shift) % 26) + lower;
+            return String.fromCharCode(shiftedCharCode);
+        }
+        return char;
     };
 
     return (
         <main className='App'>
-            <Input value={text} onChange={e => handleInputChange(e)} />
+            <Input
+                value={text}
+                onChange={e => {
+                    const { value } = e.target;
+                    setText(value);
+                    setEncryptedText(encrypt(value, shiftAmount));
+                }}
+            />
             <Shift
                 onChange={e => {
                     const { value } = e.target;
                     setShift(Number(value));
-                    setEncryptedText(encrypt(text));
+                    setEncryptedText(encrypt(text, Number(value)));
                 }}
             />
 
