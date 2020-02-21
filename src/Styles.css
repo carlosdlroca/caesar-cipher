@@ -6,34 +6,35 @@
     box-sizing: inherit;
 }
 
-:root {
-    --font-size: 3rem;
-}
-
 html {
     box-sizing: border-box;
     font-size: 62.5%;
     font-family: sans-serif;
-    background: paleturquoise;
+    background: linear-gradient(to left, #232526, #414345);
+    color: white;
 }
 
 .App {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-content: center;
-
     height: 100vh;
 }
 
-h1 {
-    font-size: 5rem;
-    text-align: center;
-    margin-top: 4rem;
-    text-decoration: underline;
+.HeaderTitle {
+    padding: 2rem 3rem;
+    width: 100%;
+    font-size: 4rem;
+    font-weight: 600;
+    background: linear-gradient(to right, #eb3349, #f45c43);
+}
+
+.HeaderTitle::selection {
+    background: grey;
 }
 
 .Cipher {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     display: flex;
     flex-flow: row wrap;
     justify-content: center;
@@ -42,21 +43,19 @@ h1 {
 }
 
 .Input {
-    font-size: var(--font-size);
+    font-size: 3rem;
     padding: .4rem .5rem;
     border: none;
+    border-radius: .4rem 0 0 .4rem;
 }
 
 .Shift {
-    font-size: 1.4rem;
     background-color: #eee;
     border: none;
-    transition: background-color .2s ease-in-out;
-}
-
-.Shift:hover {
-    background-color: #ddd;
+    border-radius: 0 .4rem .4rem 0;
     cursor: pointer;
+    font-size: 1.4rem;
+    transition: background-color .2s ease-in-out;
 }
 
 .EncryptedText {
@@ -66,13 +65,44 @@ h1 {
     flex: 0 0 100%;
 }
 
-.EncryptedText span {
-    font-size: 2rem;
-    color: white;
+.EncryptedLabel {
+    font-size: 1.5rem;
+    color: #fdfdfd;
+    font-weight: 100;
+    letter-spacing: .2rem;
 }
 
-footer {
-    font-size: 2rem;
-    text-align: center;
-    margin-bottom: 4rem;
+@media only screen and (max-width: 905px) {
+    .HeaderTitle {
+        font-size: 2.5rem;
+    }
+
+    .Cipher {
+        width: 100%;
+    }
+
+    .Input {
+        font-size: 1.5rem;
+        padding: 1rem;
+    }
+}
+
+@media only screen and (max-width: 680px) {
+    .Cipher {
+        margin-top: 1rem;
+        position: unset;
+        transform: translate(0, 0);
+    }
+
+    .Input {
+        flex: 0 0 98%;
+        border-radius: .4rem;
+    }
+
+    .Shift {
+        flex: 0 0 50%;
+        margin-top: 3rem;
+        padding: 1rem;
+        border-radius: .4rem;
+    }
 }

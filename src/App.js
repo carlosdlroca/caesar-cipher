@@ -34,10 +34,11 @@ export default () => {
 
     return (
         <main className='App'>
-            <h1>Caeser Cipher</h1>
+            <header className='HeaderTitle'>Caeser Cipher</header>
             <section className='Cipher'>
                 <Input
                     value={text}
+                    placeholder={"Enter your text"}
                     onChange={e => {
                         const { value } = e.target;
                         setText(value);
@@ -52,12 +53,10 @@ export default () => {
                     }}
                 />
                 <h3 className='EncryptedText'>
-                    <span>Encrypted:</span> <br /> {encryptedText}
+                    <span class='EncryptedLabel'>Encrypted:</span> <br />{" "}
+                    {encryptedText}
                 </h3>
             </section>
-            <footer>
-                Created by <span className='Author'>Carlos De La Roca</span>
-            </footer>
         </main>
     );
 };
