@@ -31,7 +31,6 @@ path {
     width: 100%;
     font-size: 4rem;
     font-weight: 600;
-    /* background: linear-gradient(to right, #eb3349, #f45c43); */
 }
 
 .HeaderTitle::selection {
