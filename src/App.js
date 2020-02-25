@@ -34,6 +34,12 @@ export default () => {
 
     return (
         <main className='App'>
+            <a
+                className='gh-link'
+                href='https://github.com/carlosdlroca/caeser-cipher'
+            >
+                Link to Code
+            </a>
             <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'>
                 <defs>
                     <linearGradient id='myGradient'>
