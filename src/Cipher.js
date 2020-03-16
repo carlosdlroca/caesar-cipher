@@ -1,36 +1,59 @@
-import React, { useState } from "react";
+import React, { useReducer } from "react";
 import Input from "./Input";
 import Shift from "./Shift";
 import { encrypt } from "./utils/encrypt";
 
+const initialState = {
+    text: "",
+    shift: 0,
+    encryptedText: ""
+};
+
+const reducer = (state, action) => {
+    switch (action.type) {
+        case "UPDATE_TEXT":
+            return {
+                ...state,
+                text: action.value,
+                encryptedText: encrypt(action.value, state.shift)
+            };
+        case "UPDATE_SHIFT":
+            const shiftValue = Number(action.value);
+            return {
+                ...state,
+                shift: shiftValue,
+                encryptedText: encrypt(state.text, shiftValue)
+            };
+        default:
+            return state;
+    }
+};
+
 export default () => {
-    const [text, setText] = useState("");
-    const [shiftAmount, setShift] = useState(0);
-    const [encryptedText, setEncryptedText] = useState(text);
+    const [state, dispatch] = useReducer(reducer, initialState);
 
-    const handleInputOnChange = e => {
-        const { value } = e.target;
-        setText(value);
-        setEncryptedText(encrypt(value, shiftAmount));
-    };
-
-    const handleOnShiftChange = e => {
-        const { value } = e.target;
-        setShift(Number(value));
-        setEncryptedText(encrypt(text, Number(value)));
+    const handleChange = (event, type) => {
+        const { value } = event.target;
+        dispatch({ type, value });
     };
 
     return (
         <section className='Cipher'>
             <Input
-                value={text}
+                value={state.text}
                 placeholder={"Enter your text"}
-                onChange={handleInputOnChange}
+                onChange={e => {
+                    handleChange(e, "UPDATE_TEXT");
+                }}
             />
-            <Shift onChange={handleOnShiftChange} />
+            <Shift
+                onChange={e => {
+                    handleChange(e, "UPDATE_SHIFT");
+                }}
+            />
             <h3 className='EncryptedText'>
                 <span class='EncryptedLabel'>Encrypted:</span> <br />
-                {encryptedText}
+                {state.encryptedText}
             </h3>
         </section>
     );
