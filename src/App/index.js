@@ -1,7 +1,7 @@
 import React from "react";
 import "./Styles.css";
 
-import Cipher from "./Cipher";
+import Cipher from "../Cipher";
 import BackgroundSvg from "./BackgroundSvg";
 
 export default () => {
