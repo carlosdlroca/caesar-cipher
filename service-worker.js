@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/caeser-cipher/precache-manifest.4d25a6dc18e5a7ef997e51376c293103.js"
+  "/caeser-cipher/precache-manifest.ab7b4f6dc3a09c0ef099aa1a4d936762.js"
 );
 
 self.addEventListener('message', (event) => {
