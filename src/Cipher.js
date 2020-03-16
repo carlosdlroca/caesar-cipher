@@ -26,7 +26,7 @@ export default () => {
                 }}
             />
             <h3 className='EncryptedText'>
-                <span class='EncryptedLabel'>Encrypted:</span> <br />
+                <span className='EncryptedLabel'>Encrypted:</span> <br />
                 {state.encryptedText}
             </h3>
         </section>
