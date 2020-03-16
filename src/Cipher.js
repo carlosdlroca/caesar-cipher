@@ -1,5 +1,4 @@
 import React, { useReducer } from "react";
-import Input from "./Input";
 import Shift from "./Shift";
 import { encrypt } from "./utils/encrypt";
 
@@ -39,12 +38,13 @@ export default () => {
 
     return (
         <section className='Cipher'>
-            <Input
+            <input
                 value={state.text}
                 placeholder={"Enter your text"}
                 onChange={e => {
                     handleChange(e, "UPDATE_TEXT");
                 }}
+                className='Input'
             />
             <Shift
                 onChange={e => {
