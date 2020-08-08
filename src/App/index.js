@@ -9,12 +9,12 @@ export default () => {
         <main className='App'>
             <a
                 className='gh-link'
-                href='https://github.com/carlosdlroca/caeser-cipher'
+                href='https://github.com/carlosdlroca/caesar-cipher'
             >
                 Link to Code
             </a>
             <BackgroundSvg />
-            <header className='HeaderTitle'>Caeser Cipher</header>
+            <header className='HeaderTitle'>Caesar Cipher</header>
             <Cipher />
         </main>
     );
